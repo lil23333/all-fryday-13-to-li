@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>mrBin</title>
+<style>
+body {
+background-color : #5F9EA0;
+}
+div {
+heigth : 30px;
+width  : 50px;
+backgroung-color : #555;
+}
+.color1 {
+background-color : #DC143C;
+}
+
+.color2 {
+background-color : #2F4F4F;
+}
+.hidden {
+display : none;
+}
+
+table {
+border-collapse: collapse;
+border : 1 px solid grey;
+}
+
+td {
+padding: 10px 20px;
+border : 1px solid grey;
+background-color : #F0F8FF;
+}
+
+</style>
+
+</head>
+
+<body>
+<ul>
+
+</ul>
+
+<input type = 'number'>
+
+<button>find out</button>
+
+</body>
+</html>
+
+
+let input = document.querySelector('input');
+
+let btn = document.querySelector('button');
+
+let ul = document.querySelector('ul');
+
+btn.addEventListener('click',() => {
+    let year = +input.value;
+   
+    function fryday (year) {
+        let arr = [];
+        for (let m = 0; m < 12; m++) {
+            let day = new Date(year, m, 13);
+            if (day.getDay() === 5) {
+                arr.push(day);
+            }
+        }
+        return arr;
+    }
+    let allFr = fryday (year);
+    allFr.forEach(el => {
+    let li = document.createElement('li');
+    li.textContent = el;
+    ul.appendChild(li);
+    })});
